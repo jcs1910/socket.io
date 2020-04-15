@@ -13,6 +13,11 @@ socket.on('space', (message) => {
   console.log(message);
 })
 
-
+socket.emit('changSuk', {
+  from: 'Changsuk',
+  message: `Hello, I'm Changsuk`
+}, () => {
+  console.log('server successfully received')
+})
 
 
