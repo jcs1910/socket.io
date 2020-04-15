@@ -16,14 +16,13 @@ let io = socketIO(server); //io는 브라우저가 전달하는 모든 이벤트
 io.on('connection', (socket) => {
   console.log('A new browser has connected to this server.');
   
-  socket.on('changSukEmail', () => {
-    console.log('New email from Changsuk')
+  socket.on('changSukEmail', (message) => {
+    console.log(message);
+    socket.broadcast.emit('space', {
+      content: 'Received Changsuk Event'
+    })
   })
 
-  io.emit('toChangsukEmail', {
-    from: 'Korea@naver.com',
-    content: `Hello. From Korea`
-  }) 
 })
 
 server.listen(3000, () => {
